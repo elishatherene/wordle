@@ -1,16 +1,48 @@
+const body = document.getElementsByTagName("body")[0];
 const answer = words[Math.floor(Math.random()*words.length)].toLowerCase(); // randomizes the answer's index
 storageCounter = 1; // is concatenated to a string to increment the row the letters are being inserted in
+const wordleFlex = document.getElementById("container");
+const dailyFlex = document.getElementById("daily_wordle");
+
+
+const name = document.getElementById("name");
+name.addEventListener("click", animation);
+sessionStorage.setItem("namecounter", 1);
+
+function animation() {
+  name.style.animation = "left_wordle 1s 1";
+  setTimeout(function() {
+    if (parseInt(sessionStorage.getItem("namecounter")) % 2 == 0) {
+      name.innerHTML = "Wordle &#8594;";
+      wordleFlex.style.display = "flex";
+      body.addEventListener("keydown", game);
+      dailyFlex.style.display = "none";
+      body.removeEventListener("keydown", dailyGame);
+      sessionStorage.setItem("namecounter", 1);
+    } else {
+      name.innerHTML = "Daily Wordle &#8594";
+      wordleFlex.style.display = "none";
+      body.removeEventListener("keydown", game);
+      dailyFlex.style.display = "flex";
+      body.addEventListener("keydown", dailyGame);
+      sessionStorage.setItem("namecounter", 0);
+    }
+  }, 750);
+  setTimeout(function() {
+    name.style.animation = "right_wordle 1s 1";
+  }, 1000);
+}
 
 if (!localStorage.getItem("totalcorrect")) {
   localStorage.setItem("totalcorrect", 0);
 }
 
-document.getElementsByTagName("body")[0].addEventListener("keydown", game);
-
 // for touchscreen devices
 for (let j = 0; j < document.getElementsByClassName("keys").length; j++) {
   document.getElementsByClassName("keys")[j].addEventListener("click", game);
 }
+
+body.addEventListener("keydown", game);
 
 function game(e) {
   // to type and insert letters
@@ -117,3 +149,34 @@ function gameStyling() {
   document.getElementById("bottom_row").style.opacity= "0.5"; // for touchscreen
   document.getElementById("total_correct").innerHTML = "Total Amount Correct: " + localStorage.getItem("totalcorrect");
 }
+
+if (!localStorage.getItem("colorflag")) {
+  localStorage.setItem("colorflag", "light");
+}
+
+function setColor() {
+  if (localStorage.getItem("colorflag") == "light") {
+    localStorage.setItem("colorflag", "dark");
+  } else {
+    localStorage.setItem("colorflag", "light");
+  }
+  colorChange();
+}
+
+function colorChange() {
+  if (localStorage.getItem("colorflag") == "light") {
+    body.style.backgroundColor = "black";
+    name.style.color = "white";
+    container.style.color = "white";
+    document.getElementById("daily_wordle").style.color = "white";
+    document.getElementById("color").style.color = "white";
+  } else {
+    body.style.backgroundColor = "lightyellow";
+    name.style.color = "black";
+    container.style.color = "black";
+    document.getElementById("daily_wordle").style.color = "black";
+    document.getElementById("color").style.color = "black";
+  }
+} colorChange();
+
+document.getElementById("color").addEventListener("click", setColor);

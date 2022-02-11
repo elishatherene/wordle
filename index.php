@@ -6,7 +6,10 @@
   <title>Wordle</title>
 </head>
 <body>
-  <h1 style="text-align:center; color:white; font-size:30px;">Wordle</h1>
+  <h1 id="name">
+    Wordle
+    <span>&#8594;</span>
+  </h1>
   <div id="container">
     <div class="grid">
       <div class="rows" id="row_1">
@@ -98,7 +101,56 @@
     <span id="total_correct"></span>
     <button id="btn">Play Again</button>
   </div>
+
+  <div id="daily_wordle">
+    <div class="grid">
+      <div class="rows" class="row_1">
+        <div class="spots daily_spots_1"></div>
+        <div class="spots daily_spots_1"></div>
+        <div class="spots daily_spots_1"></div>
+        <div class="spots daily_spots_1"></div>
+        <div class="spots daily_spots_1"></div>
+      </div>
+      <div class="rows" class="row_2">
+        <div class="spots daily_spots_2"></div>
+        <div class="spots daily_spots_2"></div>
+        <div class="spots daily_spots_2"></div>
+        <div class="spots daily_spots_2"></div>
+        <div class="spots daily_spots_2"></div>
+      </div>
+      <div class="rows" class="row_3">
+        <div class="spots daily_spots_3"></div>
+        <div class="spots daily_spots_3"></div>
+        <div class="spots daily_spots_3"></div>
+        <div class="spots daily_spots_3"></div>
+        <div class="spots daily_spots_3"></div>
+      </div>
+      <div class="rows" class="row_4">
+        <div class="spots daily_spots_4"></div>
+        <div class="spots daily_spots_4"></div>
+        <div class="spots daily_spots_4"></div>
+        <div class="spots daily_spots_4"></div>
+        <div class="spots daily_spots_4"></div>
+      </div>
+      <div class="rows" class="row_5">
+        <div class="spots daily_spots_5"></div>
+        <div class="spots daily_spots_5"></div>
+        <div class="spots daily_spots_5"></div>
+        <div class="spots daily_spots_5"></div>
+        <div class="spots daily_spots_5"></div>
+      </div>
+      <div class="rows" class="row_6">
+        <div class="spots daily_spots_6"></div>
+        <div class="spots daily_spots_6"></div>
+        <div class="spots daily_spots_6"></div>
+        <div class="spots daily_spots_6"></div>
+        <div class="spots daily_spots_6"></div>
+      </div>
+    </div>
+  </div>
+  <div id="color">&#9998;</div>
 </body>
 <script src="words.js"></script>
 <script src="index.js"></script>
+<script src="daily-wordle.js"></script>
 </html>
