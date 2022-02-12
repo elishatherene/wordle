@@ -2,18 +2,23 @@ if (!localStorage.getItem("wordindex")) {
   localStorage.setItem("wordindex", 0); // runs once unless localStorage is cleared in which case the high score is cleared and everything
 }
 
-// the Heroku Scheduler runs this file every 24 hours at 11PM UTC
-function newWord() {
-  var index = parseInt(localStorage.getItem("wordindex"));
-  index += 1;
-  if (index > words.length) {
-    localStorage.setItem("wordindex", 0)
-    newWord();
-  }
-  localStorage.setItem("dailyanswer", words[index].toLowerCase());
-  localStorage.setItem("wordindex", index);
-  dailyAnswer = localStorage.getItem("dailyanswer");
+// gets the day of the year e.g. January 3rd = 3 or December 31st = 365 and sets index to that number to iterate through the word list
+let date = new Date();
+let month = date.getMonth();
+let day = date.toString();
+day = day.split(" ");
+day = day[2];
+day = parseInt(day);
+day = ((month*30) + day);
+let index = parseInt(localStorage.getItem("wordindex"));
+index = day;
+if (index > words.length) {
+  localStorage.setItem("wordindex", 0);
+  newWord();
 }
+localStorage.setItem("dailyanswer", words[index].toLowerCase());
+localStorage.setItem("wordindex", index);
+dailyAnswer = localStorage.getItem("dailyanswer");
 
 dailyStorageCounter = 1; // is concatenated to a string to increment the row the letters are being inserted in
 

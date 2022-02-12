@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
+  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
   <link href="index.css" rel="stylesheet" type="text/css"/>
   <title>Wordle</title>
 </head>
