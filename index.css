@@ -1,7 +1,7 @@
 body {
-  background-color: black;
+  background-color: rgb(130, 176, 245);
   color: white;
-  font-family: sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   overflow-x: hidden;
 }
 
@@ -17,7 +17,7 @@ body {
 
 #name {
   font-size: 30px;
-  color: white;
+  color: #0F52BA;
   position: relative;
   text-align: center;
 }
@@ -63,7 +63,7 @@ body {
 
 #middle_row {
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto; /*what are the autos for*/
   grid-column-gap: 1px;
 }
 
